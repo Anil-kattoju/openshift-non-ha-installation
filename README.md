@@ -1,4 +1,4 @@
-# non ha install
+# non ha install TL;DR
 
 ### On all nodes
 ```sh
@@ -28,5 +28,6 @@ sed -i '/OPTIONS=.*/c\OPTIONS="--selinux-enabled --insecure-registry 172.30.0.0/
 
 ### On master
 ```sh
-root@master# ssh-keygen
+root@master# ssh-keygen  #copy public keys to all machines
+atomic-openshift-installer install
 ```
