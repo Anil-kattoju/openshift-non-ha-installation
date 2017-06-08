@@ -6,7 +6,7 @@ subscription-manager register --username=${user_name} --password=${password}
 
 subscription-manager list --available --matches '*OpenShift*'
 subscription-manager attach --pool=${pool_id}
-subscription-manager repos --disable="*"
+
 
 subscription-manager repos  --disable=*
 subscription-manager repos \
@@ -38,7 +38,10 @@ openshift_master_default_subdomain=apps.osecloud.com
 osm_default_node_selector="region=primary"
 openshift_docker_insecure_registries=172.30.0.0/16
 
-penshift_hosted_manage_router=true
+openshift_master_api_port=443
+openshift_master_console_port=443
+
+openshift_hosted_manage_router=true
 openshift_hosted_manage_registry=true
 openshift_hosted_router_selector='region=infra'
 openshift_hosted_registry_selector='region=infra'
