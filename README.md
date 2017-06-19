@@ -34,23 +34,17 @@ atomic-openshift-installer install
 
 ### Installer Helper
 ```yml
-openshift_master_default_subdomain=apps.osecloud.com
-osm_default_node_selector="region=primary"
-openshift_docker_insecure_registries=172.30.0.0/16
-
-openshift_master_api_port=443
-openshift_master_console_port=443
-
-openshift_hosted_manage_router=true
-openshift_hosted_manage_registry=true
-openshift_hosted_router_selector='region=infra'
-openshift_hosted_registry_selector='region=infra'
-
-openshift_hosted_metrics_deploy=true
-openshift_hosted_metrics_public_url=https://hawkular.apps.osecloud.com/hawkular/metrics
-
-openshift_master_logging_public_url=https://kibana.apps.osecloud.com
-openshift_hosted_logging_deploy=true
-
-openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/openshift-passwd'}]
+  openshift_master_default_subdomain: apps.osecloud.com
+  openshift_docker_insecure_registries: 172.30.0.0/16
+  openshift_master_api_port: 443
+  openshift_master_console_port: 443
+  openshift_hosted_manage_router: True
+  openshift_hosted_manage_registry: True
+  openshift_hosted_router_selector: 'region=infra'
+  openshift_hosted_registry_selector: 'region=infra'
+  openshift_hosted_metrics_deploy: True
+  openshift_hosted_metrics_public_url: https://hawkular.apps.ck.osecloud.com/hawkular/metrics
+  openshift_master_logging_public_url: https://kibana.apps.ck.osecloud.com
+  openshift_hosted_logging_deploy: True
+  openshift_master_identity_providers: [{'name': 'allow_all', 'login': 'true', 'challenge': 'true', 'kind': 'AllowAllPasswordIdentityProvider'}]
 ```
