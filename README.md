@@ -1,5 +1,32 @@
 # non ha install TL;DR
 
+### List of nodes with a specific label
+> with type=cluster and Values=Chak labels   
+```sh
+aws ec2 describe-instances   --filters "Name=tag:cluster,Values=chak" |   jq -j '.Reservations[].Instances[] | .PrivateIpAddress, "  ", .PublicIpAddress, "\n"'  
+```
+
+### Update route 53 rules
+> Choose one of them as master and one of them as router.
+```sh
+export record_name=apps.ck.osecloud.com
+export record_value=13.59.37.234
+export ttl=60
+export action=UPSERT
+export record_type=A
+
+expport zone_id=$(aws route53 list-hosted-zones | jq -r ".HostedZones[] | select(.Name == \"ck.osecloud.com.\") | .Id" | cut -d'/' -f3)
+
+
+function change_batch() {
+	jq -c -n "{\"Changes\": [{\"Action\": \"$action\", \"ResourceRecordSet\": {\"Name\": \"$record_name\", \"Type\": \"$record_type\", \"TTL\": $ttl, \"ResourceRecords\": [{\"Value\": \"$record_value\"} ] } } ] }"
+}
+
+aws route53 change-resource-record-sets --hosted-zone-id ${zone_id} --change-batch $(change_batch) | jq -r '.ChangeInfo.Id' | cut -d'/' -f3
+```
+> Repeat it for *.apps and also ck.osecloud.com  
+
+
 ### On all nodes
 ```sh
 subscription-manager register --username=${user_name} --password=${password}
@@ -48,3 +75,7 @@ atomic-openshift-installer install
   openshift_hosted_logging_deploy: True
   openshift_master_identity_providers: [{'name': 'allow_all', 'login': 'true', 'challenge': 'true', 'kind': 'AllowAllPasswordIdentityProvider'}]
 ```
+
+
+
+
