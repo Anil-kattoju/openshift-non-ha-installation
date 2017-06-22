@@ -15,7 +15,7 @@ export ttl=60
 export action=UPSERT
 export record_type=A
 
-expport zone_id=$(aws route53 list-hosted-zones | jq -r ".HostedZones[] | select(.Name == \"ck.osecloud.com.\") | .Id" | cut -d'/' -f3)
+export zone_id=$(aws route53 list-hosted-zones | jq -r ".HostedZones[] | select(.Name == \"ck.osecloud.com.\") | .Id" | cut -d'/' -f3)
 
 
 function change_batch() {
