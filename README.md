@@ -70,7 +70,7 @@ atomic-openshift-installer install
   openshift_hosted_router_selector: 'region=infra'
   openshift_hosted_registry_selector: 'region=infra'
   openshift_hosted_metrics_deploy: True
-  openshift_hosted_metrics_public_url: https://hawkular-metrics.apps.ck.osecloud.com/hawkular/metrics
+  openshift_hosted_metrics_public_url: https://hawkular.apps.ck.osecloud.com/hawkular/metrics
   openshift_master_logging_public_url: https://kibana.apps.ck.osecloud.com
   openshift_hosted_logging_deploy: True
   openshift_master_identity_providers: [{'name': 'allow_all', 'login': 'true', 'challenge': 'true', 'kind': 'AllowAllPasswordIdentityProvider'}]
