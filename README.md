@@ -74,6 +74,8 @@ atomic-openshift-installer install
   openshift_master_logging_public_url: https://kibana.apps.ck.osecloud.com
   openshift_hosted_logging_deploy: True
   openshift_master_identity_providers: [{'name': 'allow_all', 'login': 'true', 'challenge': 'true', 'kind': 'AllowAllPasswordIdentityProvider'}]
+  openshift_master_named_certificates: [{"certfile": "/home/ec2-user/vault/ck.osecloud.com/fullchain.pem", "keyfile": "/home/ec2-user/vault/ck.osecloud.com/privkey.pem", "names":["ck.osecloud.com"]}]
+  openshift_master_overwrite_named_certificates: true
 ```
 
 
