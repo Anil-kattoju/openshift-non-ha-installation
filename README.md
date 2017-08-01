@@ -76,6 +76,8 @@ atomic-openshift-installer install
   openshift_master_identity_providers: [{'name': 'allow_all', 'login': 'true', 'challenge': 'true', 'kind': 'AllowAllPasswordIdentityProvider'}]
   openshift_master_named_certificates: [{"certfile": "/home/ec2-user/vault/ck.osecloud.com/fullchain.pem", "keyfile": "/home/ec2-user/vault/ck.osecloud.com/privkey.pem", "names":["ck.osecloud.com"]}]
   openshift_master_overwrite_named_certificates: true
+  #openshift_master_identity_providers=[{'name': 'htpasswd_auth', 'login': 'true', 'challenge': 'true', 'kind': 'HTPasswdPasswordIdentityProvider', 'filename': '/etc/origin/master/htpasswd'}]
+  #openshift_master_htpasswd_users={'admin': 'Admin@1'}
 ```
 
 
